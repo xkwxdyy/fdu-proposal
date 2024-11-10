@@ -1,0 +1,43 @@
+\CUSDependency{package={needspace}}
+\CUSProvideExplModule{space}{\cus@d@te}{\cus@versi@n}{space setting}
+
+\NewDocumentCommand \page { +O{} }
+  {
+    
+  }
+
+\protected\def\needhspace#1{
+  \leavevmode
+  \begingroup
+  \setlength\dimen@{\dimexpr#1}%
+  \hskip\z@\@plus\dimen@
+  \penalty -100\hskip\z@\@plus -\dimen@
+  \hskip\dimen@
+  \penalty 9999
+  \hskip -\dimen@
+  \hskip\z@skip
+  \endgroup}
+
+\protected\def\breakablevspace#1{%
+  \begingroup
+  \@tempskipa\dimexpr#1\relax \@tempskipb\@tempskipa
+  \divide\@tempskipa\sixt@@n
+  \ifdim\@tempskipa>\baselineskip 
+    \@tempskipa.5\baselineskip plus.1\baselineskip minus.1\baselineskip\fi 
+  \loop
+    \vskip\@tempskipa \hrule height\z@ depth\z@
+    \advance\@tempskipb-\@tempskipa
+    \ifdim\@tempskipb>\z@ \repeat
+  \endgroup}
+\protected\def\breakablehspace#1{%
+  \ifvmode\else
+    \begingroup\leavevmode
+    \@tempskipa\dimexpr#1\relax \@tempskipb\@tempskipa
+    \divide\@tempskipa\sixt@@n 
+    \ifdim\@tempskipa>.5em \@tempskipa .5em plus.1em minus.1em\fi 
+    \loop
+      \hskip\@tempskipa\null
+      \advance\@tempskipb-\@tempskipa
+      \ifdim\@tempskipb>\z@ \repeat
+    \endgroup
+  \fi}

@@ -1,0 +1,140 @@
+\DocumentMetadata{}
+\documentclass{cusdoc}
+\newcommand{\DocDate}{2024-11-11}
+\newcommand{\DocVersion}{v1.0}
+
+\hypersetup{pdfauthor={夏大鱼羊},
+  pdftitle= fdu-proposal 手册,
+  pdfcreator={\XeLaTeX} with hyperref and fdu-proposal}
+
+\makeatletter
+\setpagestyle*{fancy}[totalempty]{
+  \sethead [ol,er] {\cls{fdu-proposal} 手册}
+  \sethead [or,el] {\headlink@warp\marked@title}
+  % \setfoot [or,el] {\texttt{longaster@163.com}}
+  \setfoot [ol,er] {第\thepage 页}
+  \setheadrulewidth {1pt}
+}
+\makeatother
+
+\usepackage{transparent}
+\newsavebox\WaterMarkBox
+\sbox{\WaterMarkBox}{\transparent{0.1}\includegraphics[width = 15cm, ]{./assets/logo.pdf}}
+\background+[./watermark]{\copy\WaterMarkBox}
+
+\newindextype[auto=true,filename=\jobname.idx,heading*={\section}]{\empty}
+\setupindex[\empty,docchange]{auto=true}
+\removegeneralname
+
+\makeatletter
+\protected\def\normalsize{%
+  \@setfontsize \normalsize {10.53937}{12.64725}%
+  \abovedisplayskip 1\p@ \@plus 4\p@ \@minus 2\p@ 
+  \abovedisplayshortskip \z@ \@plus 2\p@ 
+  \belowdisplayskip \abovedisplayskip 
+  \belowdisplayshortskip \abovedisplayshortskip
+  \let \@listi \@listI
+}
+\makeatother
+
+\def\nofuncskip{\par\vskip-\bigskipamount\vskip\parskip\par}
+\def\zhslash{／}
+\newcommand\UNEXPANDEDRESULT{最终结果使用 \tn{unexpanded} （\cs{exp_not:n}）包裹起来。}
+
+\raggedbottom \hfuzz=2.5pt \vfuzz=10pt 
+
+\usepackage{dirtree}
+\setgraphicspath+{./assets/}
+
+\def\breakablethinspace{\hskip 0.16667em\relax}
+\DeclareDocumentCommand\kv{mm}
+  % {\texttt{#1\breakablethinspace=\breakablethinspace#2}}
+  {\key{#1}\breakablethinspace=\breakablethinspace\opt{#2}}
+
+\title{\cls{fdu-proposal}：复旦大学研究生学位论文开题报告记录表}
+\author{夏大鱼羊}
+\date{\DocDate\quad \DocVersion}
+
+\enablecombinedlist 
+
+\begin{document}
+
+\usepagestyle{totalempty}
+\setlength{\lineskiplimit}{4pt}
+\setlength{\lineskip}{4pt}
+
+\def\thepage{t.\arabic{page}}
+\setuplayout{preset=balance}
+\maketitle
+
+\frontmatter
+\cusdoctoc
+\changes{v1.0}{2024/11/11}{初步完成「开题报告详情表」部分代码}
+\changes{v1.0}{2024/11/11}{初步完成手册}
+
+\mainmatter
+\usepagestyle{fancy}
+\setuptitle[chapter]{numbering=true,pagestyle=fancy}
+\removebackground[./watermark]
+
+
+\chapter{前言}
+
+\section{简介}
+
+\cls{fdu-proposal} 是复旦大学研究生开题报告登记表 \LaTeX 模板，目前只开发了开题报告详情表部分，主要原因是系统中只需要上传这一页。
+
+开题报告详情表是开题报告的主要内容，开发者是数学系学生，肯定会涉及到大量数学公式符号，以及参考文献，这些在 \LaTeX 中处理会更加得心应手，所以开发了本模板。
+
+
+\section{模板构成}
+\index{模板构成}
+
+\dirtree{%
+  .1 /fdu-proposal.
+  .2 assets\DTcomment{存放所需的 logo 或图标}.
+  .3 logo.png\DTcomment{复旦大学校徽}.
+  .2 fdu-proposal.cls\DTcomment{核心文档类文件}.
+  .2 fdu-proposal-doc.pdf\DTcomment{使用手册，也就是本文档}.
+  .2 demo.tex\DTcomment{示例文件}.
+}
+
+
+
+\chapter{模板内容}
+
+\section{环境}
+
+\subsection{\env{schedule} 环境}
+
+\begin{function}[type=environment, added = 2024-11-10]{schedule}
+  \begin{syntax}
+    \verb|\begin{schedule}|
+    ~~... \& ... \& ... \\
+    ~~... \& ... \& ... \\
+    ...
+    \verb|\end{schedule}|
+  \end{syntax}
+  研究进度及具体时间安排。表格语法，三栏，分别是起止时间、主要内容和预期结果。
+\end{function}
+
+
+
+
+\setuplayout{preset=main}
+
+
+
+\cleardoublepage 
+\cussetup[doc/cmd]{hyper=false}
+\vbadness=10000 \hbadness=10000 \vfuzz=\maxdimen \hfuzz=\maxdimen
+\backmatter
+\long\def\sectionmark#1{}
+\setuplayout{preset=balance}
+\chapter{索引}
+\vskip-14pt 
+\printindex 
+\PrintChanges 
+\PrintUsages 
+
+\end{document}
