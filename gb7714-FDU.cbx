@@ -1,0 +1,30 @@
+%%
+%% ---------------------------------------------------------------
+%% gb7714-FDU.cbx --- A bibliography style for fduthesis template
+%% ---------------------------------------------------------------
+%%
+\ProvidesFile{gb7714-FDU.cbx}[a biblatex citation style for fduthesis]
+
+%
+%   加载样式
+%
+\RequireCitationStyle{gb7714-2015} % numeric
+
+
+\DeclareCiteCommand{\parencite} % [\mkbibbrackets]
+  {\mkbibleftborder\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}%
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:comp}}
+  {}
+  {\usebibmacro{cite:dump}\setunit{\addcomma\addspace}\printfield{postnote}\mkbibrightborder}
+
+
+\DeclareCiteCommand{\cite}[\mkbibsuperscript]%利用mkbibsuperbracket添加方括号
+  {\mkbibleftborder\usebibmacro{cite:init}%
+    \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+    \usebibmacro{cite:comp}}
+  {}
+  {\usebibmacro{cite:dump}\setunit{\addcomma\addspace}%
+    \printfield{postnote}\mkbibrightborder}

@@ -301,3 +301,23 @@ TSWLatexianTemp*
 #*Notes.bib
 
 *.pdf
+
+# Local materials and generated output
+.DS_Store
+.vscode/
+__pycache__/
+*.py[cod]
+*.png
+*.zip
+build/
+dist/
+release/
+thesis/
+private/
+applications/
+local-exams/
+.tmp_*/
+tmp/
+
+private/
+*.pdf

@@ -1,0 +1,136 @@
+% 完整排版示例；身份字段均为占位内容，研究内容仅用于演示。
+% 编译：XeLaTeX → Biber → XeLaTeX → XeLaTeX。
+\documentclass[fontset=fandol,bibliography]{fdu-proposal}
+\usepackage{amsmath,amssymb}
+\addbibresource{references.bib}
+
+% 首页与页脚的信息统一在此填写。
+\fppsetup{
+  info = {
+    name = {示例学生},
+    student-id = {待填写},
+    department = {示例院系},
+    major = {示例专业},
+    research-area = {泛函分析与算子理论},
+    supervisor = {导师姓名},
+    degree-level = {博士},
+    degree-type = {学术学位},
+    admission-method = {待填写},
+    qualification-date = {待填写},
+    phone = {待填写},
+    email = {待填写},
+    proposal-count = {一},
+    proposal-date = {待填写},
+    proposal-place = {待填写},
+    thesis-title = {紧自伴算子的谱逼近与扰动估计},
+    discipline = {数学},
+    topic-source = {示例选题},
+    % 每行依次填写姓名、职称、学科或专业、工作单位。
+    experts = {
+      专家姓名甲 & 待填写 & 待填写 & 待填写 \\
+      专家姓名乙 & 待填写 & 待填写 & 待填写 \\
+      专家姓名丙 & 待填写 & 待填写 & 待填写 \\
+    },
+  }
+}
+\hypersetup{
+  pdftitle = {研究生学位论文开题报告记录表（排版示例）},
+  pdfauthor = {},
+  pdfsubject = {泛函分析与算子理论方向的通用排版示例},
+  pdfkeywords = {}
+}
+
+\begin{document}
+
+\basicInformation
+\supervisorComments
+\chapter{开题报告详情表（可续页）}
+
+\section{选题有关的国内外研究综述（附主要参考文献）}
+
+设 $H$ 为无限维可分复 Hilbert 空间，$T\colon H\to H$ 为紧自伴算子。
+紧自伴算子的谱定理给出了非零谱点的特征值描述，并将算子的分析归结为相应特征子空间的研究
+\parencite{conway1990}。
+
+设 $P_n$ 为有限秩正交投影，并且对每个 $x\in H$ 均有 $P_nx\to x$。
+在整个空间 $H$ 上定义
+\begin{equation}\label{eq:compression}
+  T_n=P_nTP_n,\qquad \varepsilon_n=\lVert T-T_n\rVert.
+\end{equation}
+由 $T$ 的紧性可得 $\varepsilon_n\to0$。对于自伴算子，算子范数误差可以控制谱集合的偏差：
+\[
+  d_{\mathrm H}\bigl(\sigma(T_n),\sigma(T)\bigr)\leq\varepsilon_n,
+\]
+其中 $\sigma(T)$ 表示谱，$d_{\mathrm H}$ 表示复平面中紧集的 Hausdorff 距离。
+
+该示例拟考察有限秩压缩与孤立特征值的稳定性；所列结论来自经典理论，仅用于演示排版。
+
+\printbibliography
+
+\section{选题的理论意义、实际意义、创新点}
+
+理论分析将明确强收敛、算子范数收敛与谱收敛的联系，以及紧性、自伴性的作用。
+典型算子的截断计算可用于检验误差界。
+
+研究计划将考察可计算的收敛速率与谱间隙条件。创新性须在专题文献检索后判断，
+经典定理、已有扰动界和验证性计算均不作为创新点。
+
+\section{所要解决的主要问题及研究途径与方法（预期思路或技术路线）}
+
+首先分析式~\eqref{eq:compression} 的算子范数误差。由于 $P_n$ 为正交投影且 $T=T^*$，有
+\begin{equation}\label{eq:compression-bound}
+  \lVert T-P_nTP_n\rVert
+  \leq 2\lVert(I-P_n)T\rVert\longrightarrow0.
+\end{equation}
+紧算子将单位球映为相对紧集；在该集合上，$P_n\to I$ 的强收敛与投影的一致有界性
+共同给出一致收敛，从而得到式~\eqref{eq:compression-bound}。
+
+其次，记 $R(z,T)=(zI-T)^{-1}$。对于 $z\notin\sigma(T)$，若
+$\varepsilon_n\lVert R(z,T)\rVert<1$，则 Neumann 级数保证 $z\notin\sigma(T_n)$，且
+\begin{equation}\label{eq:resolvent-bound}
+  \lVert R(z,T_n)-R(z,T)\rVert
+  \leq\frac{\varepsilon_n\lVert R(z,T)\rVert^2}
+               {1-\varepsilon_n\lVert R(z,T)\rVert}.
+\end{equation}
+自伴算子的预解式范数由谱距离确定，因此估计式~\eqref{eq:resolvent-bound}
+可用于分析谱集合的偏差，并在孤立谱点附近进一步研究谱投影。
+
+\begin{enumerate}[leftmargin=*]
+  \item 整理紧算子、自伴算子、谱与预解式的定义，核查各项结论的适用条件。
+  \item 利用有限秩压缩与预解式恒等式建立误差估计，分析谱间隙条件。
+  \item 以 $\ell^2$ 上的对角算子 $Te_k=k^{-1}e_k$ 为验证例子；
+        对前 $n$ 个标准基向量生成的子空间，截断误差恰为 $(n+1)^{-1}$。
+  \item 比较具有不同正则性条件的紧积分算子，整理误差上界与适用范围。
+\end{enumerate}
+
+\section{研究进度及具体时间安排}
+
+% schedule 环境固定为三列：起讫日期、主要研究内容、预期结果。
+\begin{schedule}
+  第 1 至 2 个月 & 阅读紧算子谱理论文献并确定问题 & 完成文献综述 \\
+  第 3 至 5 个月 & 推导压缩误差与预解式估计 & 形成估计式与验证方案 \\
+  第 6 至 8 个月 & 研究谱投影并验证典型算子 & 完成论文初稿 \\
+  第 9 至 10 个月 & 修改论文并核查结论 & 完成论文定稿 \\
+\end{schedule}
+
+\section{协助导师具体指导的人员配备情况及现有条件}
+
+\begin{assistants}
+  姓名 & 职务或职称 & 工作单位 \\
+  协助指导人员 & 待填写 & 待填写 \\
+\end{assistants}
+
+示例研究所需条件包括泛函分析与算子理论文献、数学计算软件和常规计算设备。
+正式报告应根据实际条件填写人员安排、软件环境和设备情况。
+
+\section{与选题有关的研究工作积累、已有的研究工作成绩}
+
+该示例未填写真实研究经历或研究成果。正式报告应列明已经完成的文献阅读、
+定理证明、误差估计和算例验证，并提供能够核验的成果信息；尚未完成的工作应列入研究计划。
+
+\section{课题经费预算}
+
+示例预算主要包括文献资料、学术交流与计算资源费用。具体金额、经费来源和支出依据均待填写，
+正式预算应根据实际研究需求与相关管理要求编制。
+
+\end{document}

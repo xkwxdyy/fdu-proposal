@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "topic": "independent-repository",
+  "issues": [],
+  "changes": [
+    {
+      "id": "fdu-proposal-independent-repository-20261101",
+      "type": "changed",
+      "zh": "恢复独立仓库维护，迁入已提交源码并补齐独立构建所需文件，个人材料继续本地保留。",
+      "changelog": false,
+      "announce": false
+    }
+  ]
+}
