@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+  <title id="title">fdu-proposal · 研究生学位论文开题报告记录表</title>
+  <desc id="desc">复旦大学研究生开题报告 LaTeX 模板，提供空白表与完整填写示例，支持正文续页和自动参考文献。下方按 schedule 环境的列名展示进度表结构。</desc>
+  <!-- Sources: templates/main.tex, templates/example.tex and the schedule environment in fdu-proposal.cls. -->
+  <rect width="1200" height="400" rx="12" fill="#faf8f4"/>
+  <g id="proposal-title" fill="#2e3d4e">
+    <text x="58" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="26" letter-spacing="2">复旦大学 · 研究生学位论文</text>
+    <text x="54" y="180" font-family="Georgia, 'Times New Roman', serif" font-size="104" letter-spacing="-3">fdu-proposal</text>
+    <text x="58" y="239" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="33">正文可续页 · 参考文献自动排版</text>
+  </g>
+  <g id="form-purpose" fill="#2e3d4e" font-family="'Songti SC', 'STSong', 'Noto Serif CJK SC', serif" font-size="43">
+    <path d="M 850 85 V 225" stroke="#c9c6bf" stroke-width="1.5"/>
+    <text x="899" y="136">开题报告</text>
+    <text x="899" y="204">记录表</text>
+  </g>
+  <g id="schedule-columns" fill="none" stroke="#a9afb4" stroke-width="1.5">
+    <rect x="58" y="279" width="1084" height="73"/>
+    <path d="M 284 279 V 352 M 818 279 V 352"/>
+  </g>
+  <g id="schedule-headings" fill="#2e3d4e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="27">
+    <text x="112" y="325">起讫日期</text>
+    <text x="468" y="325">主要研究内容</text>
+    <text x="924" y="325">预期结果</text>
+  </g>
+  <text x="58" y="384" fill="#59646e" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="21">\fppsetup{info={...}}</text>
+</svg>
